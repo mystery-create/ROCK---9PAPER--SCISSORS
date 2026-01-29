@@ -4,6 +4,8 @@ const msg=document.querySelector("#msg");
 const user=document.querySelector("#user-score");
 const com=document.querySelector("#comp-score");
 const choices=document.querySelectorAll(".choice");
+   const cname=document.querySelector(".comp");
+    const yname=document.querySelector(".you");
 const genCompchoice=() =>{
     const options=["rock","paper","scissor"]
     //rock,paper,scissors
@@ -39,17 +41,20 @@ const playgame=(userchoice) => {
     console.log("user choices",userchoice);
      //generate computer choices -> modular 
      const compchoice=genCompchoice();
+     cname.innerText=compchoice;
+     yname.innerText=userchoice;
      console.log("computer choices",compchoice);
      if(userchoice===compchoice){
         drawGame();
      }else{
+        
         let userWin=true;
         if(userchoice==="rock"){
             //paper,scissor
             userWin=compchoice==="paper"?false:true;}
             else if(userchoice==="paper"){
                 //rock,scissor
-                compchoice==="rock" ?true:false;
+                  userWin=compchoice==="scissor"?false:true;
                 } else{
                     //rock,paper
                  userWin=compchoice==="rock" ?false:true;
